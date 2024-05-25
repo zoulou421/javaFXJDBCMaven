@@ -19,7 +19,7 @@ public class MainController {
        String params=email+" "+password;
        Alert alert=new Alert(Alert.AlertType.INFORMATION);
        alert.setTitle("Message");
-       alert.setContentText("hello User");
+       alert.setContentText(params);
 
        alert.showAndWait();
    }
