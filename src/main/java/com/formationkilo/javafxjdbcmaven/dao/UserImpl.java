@@ -21,15 +21,17 @@ public class UserImpl implements IUser{
                 user.setId(rs.getInt(1));
                 user.setEmail(rs.getString(2));
                 user.setPassword(rs.getString(3));
-                Object nurse=rs.getObject(4);
                 user.setNurse(null);
                 user.setSec(null);
+                Object nurse=rs.getObject(4);
                 if(nurse!=null){
-                  System.out.println("Nurse"+ (Integer)nurse);
+                  //System.out.println("Nurse"+ (Integer)nurse);
+                    user.setNurse(new NursePersonImpl().get((Integer)nurse));
                 }
                 Object secreta=rs.getObject(5);
                 if(secreta!=null){
-                   System.out.println("Secretary "+(Integer)secreta);
+                   //System.out.println("Secretary "+(Integer)secreta);
+                    user.setSec(new SecretaryImpl().get((Integer)secreta));
                 }
 
             }
