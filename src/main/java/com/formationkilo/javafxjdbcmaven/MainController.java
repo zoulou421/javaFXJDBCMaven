@@ -1,5 +1,6 @@
 package com.formationkilo.javafxjdbcmaven;
 
+import javafx.application.Preloader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,11 +17,17 @@ public class MainController {
    public void getLogin(ActionEvent e){
        String email=emailtxt.getText();
        String password=passwordtxt.getText();
-       String params=email+" "+password;
+       /*String params=email+" "+password;
        Alert alert=new Alert(Alert.AlertType.INFORMATION);
        alert.setTitle("Message");
        alert.setContentText(params);
 
-       alert.showAndWait();
+       alert.showAndWait();*/
+       if(email.equals("")||password.equals("")){
+           System.out.println("Field are empty");
+       }else{
+
+       }
+
    }
 }
