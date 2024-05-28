@@ -14,6 +14,7 @@
         <junit.version>5.9.2</junit.version>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -51,11 +52,19 @@
             <artifactId>actlist-plugin</artifactId>
             <version>2.2.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.20.8</version>
+        </dependency>
         <dependency>
             <groupId>com.github.PlusHaze</groupId>
             <artifactId>TrayNotification</artifactId>
             <version>5393c3a54f</version>
         </dependency>
+
 
     </dependencies>
 

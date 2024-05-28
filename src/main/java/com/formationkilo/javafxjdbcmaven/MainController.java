@@ -1,10 +1,8 @@
 package com.formationkilo.javafxjdbcmaven;
 
-import javafx.application.Preloader;
+import com.formationkilo.javafxjdbcmaven.tools.Tools;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -24,7 +22,9 @@ public class MainController {
 
        alert.showAndWait();*/
        if(email.equals("")||password.equals("")){
-           System.out.println("Field are empty");
+           System.out.println("You must fill all field");
+           Tools.showErrorMessage("Error","FIELDS ARE EMPTY");
+
        }else{
 
        }
