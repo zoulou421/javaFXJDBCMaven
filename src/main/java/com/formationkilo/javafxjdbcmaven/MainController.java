@@ -1,10 +1,15 @@
 package com.formationkilo.javafxjdbcmaven;
 
+import com.formationkilo.javafxjdbcmaven.dao.IUser;
+import com.formationkilo.javafxjdbcmaven.dao.UserImpl;
+import com.formationkilo.javafxjdbcmaven.entities.User;
 import com.formationkilo.javafxjdbcmaven.tools.Tools;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class MainController {
     @FXML
@@ -12,7 +17,10 @@ public class MainController {
 
     @FXML
     private PasswordField passwordtxt;
-   public void getLogin(ActionEvent e){
+
+    private IUser userdao=new UserImpl();
+
+   public void getLogin(ActionEvent event) throws IOException {
        String email=emailtxt.getText();
        String password=passwordtxt.getText();
        /*String params=email+" "+password;
@@ -20,13 +28,26 @@ public class MainController {
        alert.setTitle("Message");
        alert.setContentText(params);
 
-       alert.showAndWait();*/
+       alert.showAndWaZit();*/
        if(email.equals("")||password.equals("")){
            System.out.println("You must fill all field");
-           Tools.showErrorMessage("Error","FIELDS ARE EMPTY");
+           Tools.showErrorMessage("Error","You must fill all field");
 
        }else{
 
+          User user=userdao.getConnection(email,password);
+          if(user!=null){
+              /*Stage stage=new Stage();
+              Parent root;
+              System.out.println("SUCCESSFULL LOooooo");
+              root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/FXML2.fxml")));
+              Scene scene = new Scene(root);
+              stage.setScene(scene);
+              stage.show();*/
+              Tools.load(event,"Bienvenue sur votre interface","/fxml/FXML1.fxml");
+          }else {
+              Tools.showErrorMessage("Error","Email or Password incorrect");
+          }
        }
 
    }
