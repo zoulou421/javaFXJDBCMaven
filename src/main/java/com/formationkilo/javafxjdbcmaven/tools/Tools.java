@@ -47,8 +47,23 @@ public class Tools {
         stage.show();
     }
 
+    private void landingSubPage(ActionEvent event,String title,String url) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource(url));
+        Scene scene=new Scene(root);
+
+        Stage stage=new Stage();
+        stage.setScene(scene);
+        stage.setTitle(title);
+
+        stage.showAndWait();
+    }
+
     public static void load(ActionEvent event,String title,String url) throws IOException{
         new Tools().landingPage(event,title,url);
+    }
+
+    public static void loadSub(ActionEvent event,String title,String url) throws IOException{
+        new Tools().landingSubPage(event,title,url);
     }
 
 

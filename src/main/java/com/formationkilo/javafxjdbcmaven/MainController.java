@@ -20,6 +20,8 @@ public class MainController {
 
     private IUser userdao=new UserImpl();
 
+    public static String userParams;
+
    public void getLogin(ActionEvent event) throws IOException {
        String email=emailtxt.getText();
        String password=passwordtxt.getText();
@@ -44,7 +46,13 @@ public class MainController {
               Scene scene = new Scene(root);
               stage.setScene(scene);
               stage.show();*/
-              Tools.load(event,"Bienvenue sur votre interface","/fxml/FXML1.fxml");
+              if(user.getNurse()!=null){
+                  userParams="Hello"+user.getNurse().getFirstName()+" "+user.getNurse().getLastName();
+              }
+              if(user.getSec()!=null){
+                  userParams="Hello"+user.getSec().getFirstName()+" "+user.getSec().getLastName();
+              }
+              Tools.load(event,"Welcome on your interface","/fxml/FXML1.fxml");
           }else {
               Tools.showErrorMessage("Error","Email or Password incorrect");
           }
