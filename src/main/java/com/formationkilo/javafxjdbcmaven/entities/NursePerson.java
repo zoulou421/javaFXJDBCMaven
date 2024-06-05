@@ -1,6 +1,6 @@
 package com.formationkilo.javafxjdbcmaven.entities;
 
-public class NursePerson {
+public class NursePerson extends Secretary {
     private int id;
     private String firstName;
     private String lastName;
