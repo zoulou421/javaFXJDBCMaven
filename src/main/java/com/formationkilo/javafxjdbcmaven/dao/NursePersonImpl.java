@@ -41,6 +41,17 @@ public class NursePersonImpl implements INursePerson{
 
     @Override
     public int add(NursePerson nurse) {
-        return 0;
+        String sql="INSERT INTO nurseperson VALUES(NULL, ?, ?, ?)";
+        int ok=0;
+        try {
+            db.initPrepare(sql);
+            db.getPreparedStatement().setString(1,nurse.getFirstName());
+            db.getPreparedStatement().setString(2,nurse.getLastName());
+            db.getPreparedStatement().setString(3,nurse.getTelephone());
+            ok=db.executeMaj();
+        }catch (Exception ex) {
+           ex.printStackTrace();
+        }
+        return ok;
     }
 }
