@@ -5,6 +5,7 @@ import com.formationkilo.javafxjdbcmaven.entities.NursePerson;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NursePersonImpl implements INursePerson{
@@ -12,6 +13,7 @@ public class NursePersonImpl implements INursePerson{
     private DB db=new DB();
     @Override
     public List<Appointment> getAppointmentByNurse(int id) {
+
         return null;
     }
 
@@ -53,5 +55,28 @@ public class NursePersonImpl implements INursePerson{
            ex.printStackTrace();
         }
         return ok;
+    }
+
+    @Override
+    public List<NursePerson> getAllNurse() {
+        String sql="SELECT * FROM nurseperson";
+        List<NursePerson>nurseList=new ArrayList<NursePerson>();
+        try {
+            db.initPrepare(sql);
+            //execute
+            ResultSet resultSet= db.executeSelect();
+
+            while (resultSet.next()){
+                NursePerson nurse=new NursePerson();
+                nurse.setId(resultSet.getInt(1));
+                nurse.setFirstName(resultSet.getString(2));
+                nurse.setLastName(resultSet.getString(3));
+                nurse.setTelephone(resultSet.getString(4));
+                nurseList.add(nurse);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nurseList;
     }
 }

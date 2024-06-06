@@ -9,5 +9,7 @@ module com.formationkilo.javafxjdbcmaven {
 
 
     opens com.formationkilo.javafxjdbcmaven to javafx.fxml;
+    opens com.formationkilo.javafxjdbcmaven.entities to javafx.base;
     exports com.formationkilo.javafxjdbcmaven;
+
 }
