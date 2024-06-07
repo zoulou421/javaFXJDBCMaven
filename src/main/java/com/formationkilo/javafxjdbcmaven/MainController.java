@@ -2,6 +2,7 @@ package com.formationkilo.javafxjdbcmaven;
 
 import com.formationkilo.javafxjdbcmaven.dao.IUser;
 import com.formationkilo.javafxjdbcmaven.dao.UserImpl;
+import com.formationkilo.javafxjdbcmaven.entities.Secretary;
 import com.formationkilo.javafxjdbcmaven.entities.User;
 import com.formationkilo.javafxjdbcmaven.tools.Tools;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class MainController {
+    public static Secretary secretaryParams;
     @FXML
     private TextField emailtxt;
 
@@ -47,10 +49,11 @@ public class MainController {
               stage.setScene(scene);
               stage.show();*/
               if(user.getNurse()!=null){
-                  userParams="Hello"+user.getNurse().getFirstName()+" "+user.getNurse().getLastName();
+                  userParams="Welcome "+user.getNurse().getFirstName()+" "+user.getNurse().getLastName();
               }
               if(user.getSec()!=null){
-                  userParams="Hello"+user.getSec().getFirstName()+" "+user.getSec().getLastName();
+                  secretaryParams=user.getSec();
+                  userParams="Welcome "+user.getSec().getFirstName()+" "+user.getSec().getLastName();
               }
               Tools.load(event,"Welcome on your interface","/fxml/FXML1.fxml");
           }else {

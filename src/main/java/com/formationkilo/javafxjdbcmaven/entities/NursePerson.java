@@ -45,4 +45,9 @@ public class NursePerson extends Secretary {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    @Override
+    public String toString() {
+        return firstName+" "+lastName;
+    }
 }

@@ -20,14 +20,14 @@ public class FXML1Controller implements Initializable {
 
     public void loadConsultation(ActionEvent event){
        try{
-           Tools.loadSub(event,"Managment of consultation","/consulationui/consultation.fxml");
+           Tools.loadSub(event,"Appointment Managment", "/appointmentui/appointment.fxml");
        }catch (Exception ex){
            ex.printStackTrace();
        }
     }
     public void loadNurse(ActionEvent event){
       try{
-          Tools.loadSub(event,"Managment of Nurses","/nurseui/nurse.fxml");
+          Tools.loadSub(event,"Nurses Managment","/nurseui/nurse.fxml");
       }catch (Exception ex){
           ex.printStackTrace();
       }
