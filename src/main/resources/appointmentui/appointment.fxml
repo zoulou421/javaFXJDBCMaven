@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="558.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.formationkilo.javafxjdbcmaven.AppointmentController">
+<AnchorPane prefHeight="567.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.formationkilo.javafxjdbcmaven.AppointmentController">
    <children>
       <Label layoutX="36.0" layoutY="63.0" text="Wording">
          <font>
@@ -36,10 +36,13 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <TableView layoutX="326.0" layoutY="63.0" prefHeight="395.0" prefWidth="495.0">
+      <TableView fx:id="appointmenttable" layoutX="300.0" layoutY="63.0" prefHeight="410.0" prefWidth="573.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="identifierColumn" prefWidth="64.0" text="Identifier" />
+          <TableColumn fx:id="wordingColumn" prefWidth="103.99993896484375" text="Wording" />
+            <TableColumn fx:id="dateapColumn" prefWidth="99.20004272460938" text="Date" />
+            <TableColumn fx:id="nurseapColumn" prefWidth="157.60003662109375" text="Nurse" />
+            <TableColumn fx:id="secretaryapColumn" prefWidth="146.39996337890625" text="Secretary" />
         </columns>
       </TableView>
    </children>

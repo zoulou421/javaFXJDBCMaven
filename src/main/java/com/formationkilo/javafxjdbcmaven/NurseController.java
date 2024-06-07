@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -56,6 +57,9 @@ public class NurseController implements Initializable {
 
     private INursePerson nursePersondao=new NursePersonImpl();
 
+    //update and delete
+    private NursePerson nursePerson;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -63,6 +67,11 @@ public class NurseController implements Initializable {
         lastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         telColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         load();
+        updatebt.setDisable(true);
+        deletebt.setDisable(true);
+        validatebt.setDisable(false);
+        cancelbt.setDisable(false);
+
 
     }
     public void insertValidate(ActionEvent event){
@@ -75,6 +84,7 @@ public class NurseController implements Initializable {
         if(ok!=0){
             Tools.showConfirmationMessage("Success","Data inserted successfully");
             load();
+            resetCancel(event);
         }else{
             Tools.showErrorMessage("Error","Insertion failed");
         }
@@ -82,7 +92,13 @@ public class NurseController implements Initializable {
     }
 
     public void resetCancel(ActionEvent event){
+       validatebt.setDisable(false);
+       updatebt.setDisable(true);
+       deletebt.setDisable(true);
 
+       firstnametxt.setText("");
+       lastnametxt.setText("");
+       teltxt.setText("");
     }
     public void updateNurse(ActionEvent event){
 
@@ -99,6 +115,21 @@ public class NurseController implements Initializable {
             nursePeople.add(nurse);
         }
         nursetable.setItems(nursePeople);
+    }
+
+    public void tableClick(MouseEvent event){
+        nursePerson=nursetable.getSelectionModel().getSelectedItem();
+        firstnametxt.setText(nursePerson.getFirstName());
+        lastnametxt.setText(nursePerson.getLastName());
+        teltxt.setText(nursePerson.getTelephone());
+
+        validatebt.setDisable(true);
+        cancelbt.setDisable(false);
+
+        updatebt.setDisable(false);
+        deletebt.setDisable(false);
+
+
     }
 
 }

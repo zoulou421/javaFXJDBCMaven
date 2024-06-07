@@ -2,6 +2,10 @@ package com.formationkilo.javafxjdbcmaven.dao;
 
 import com.formationkilo.javafxjdbcmaven.entities.Appointment;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppointmentImpl implements IAppointment{
@@ -35,6 +39,25 @@ public class AppointmentImpl implements IAppointment{
 
     @Override
     public List<Appointment> getAll() {
-        return null;
+        String sql="SELECT * FROM appointment";
+        List<Appointment>appointmentList=new ArrayList<Appointment>();
+        try {
+            db.initPrepare(sql);
+            //execute
+            ResultSet resultSet= db.executeSelect();
+
+            while (resultSet.next()){
+                Appointment appointment=new Appointment();
+                appointment.setId(resultSet.getInt(1));
+                appointment.setDate(LocalDate.parse(resultSet.getString(2)));
+                appointment.setWording(resultSet.getString(3));
+                appointment.setNursePerson(new NursePersonImpl().get(resultSet.getInt(4)));
+                appointment.setSecretary(new SecretaryImpl().get(resultSet.getInt(5)));
+                appointmentList.add(appointment);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return appointmentList;
     }
 }
