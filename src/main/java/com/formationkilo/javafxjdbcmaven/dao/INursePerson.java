@@ -10,4 +10,5 @@ public interface INursePerson {
     public NursePerson get(int id);
     public int add(NursePerson nurse);
     public List<NursePerson>getAllNurse();
+
 }

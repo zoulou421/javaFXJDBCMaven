@@ -105,7 +105,8 @@ public class NurseController implements Initializable {
     }
 
     public void deleteNurse(ActionEvent event){
-
+        nursePerson=nursetable.getSelectionModel().getSelectedItem();
+        nursetable.getItems().remove(nursePerson);
     }
 
     public void load(){
@@ -128,7 +129,6 @@ public class NurseController implements Initializable {
 
         updatebt.setDisable(false);
         deletebt.setDisable(false);
-
 
     }
 
