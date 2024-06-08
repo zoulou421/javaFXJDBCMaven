@@ -1,6 +1,6 @@
 #JavaFX app using mysql and JDBC
 
-![Capture12345.JPG](Capture12345.JPG)
+![formation.jpg](formation.jpg)
 
 ### Test app
 
