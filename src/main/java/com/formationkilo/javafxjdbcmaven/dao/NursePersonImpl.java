@@ -81,4 +81,29 @@ public class NursePersonImpl implements INursePerson{
     }
 
 
+    @Override
+    public NursePerson delete(int id) {
+        String sql="DELETE  FROM nurseperson WHERE id= ?";
+        NursePerson nurse=null;
+        try {
+            db.initPrepare(sql);
+            db.getPreparedStatement().setInt(1,id);
+
+            //execute
+            ResultSet resultSet= db.executeSelect();
+
+            if(resultSet.next()){
+                nurse=new NursePerson();
+                nurse.setId(resultSet.getInt(1));
+                nurse.setFirstName(resultSet.getString(2));
+                nurse.setLastName(resultSet.getString(3));
+                nurse.setTelephone(resultSet.getString(4));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nurse;
+    }
+
+
 }

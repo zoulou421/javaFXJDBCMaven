@@ -11,4 +11,5 @@ public interface INursePerson {
     public int add(NursePerson nurse);
     public List<NursePerson>getAllNurse();
 
+    public NursePerson delete(int id);
 }

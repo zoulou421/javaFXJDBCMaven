@@ -105,8 +105,15 @@ public class NurseController implements Initializable {
     }
 
     public void deleteNurse(ActionEvent event){
+
         nursePerson=nursetable.getSelectionModel().getSelectedItem();
-        nursetable.getItems().remove(nursePerson);
+        //nursetable.getItems().remove(nursePerson);
+        //nursePersondao.delete()
+       // nursePersondao.delete(nursePerson.getId());
+
+       // Tools.showConfirmationMessage("Success","data deleted");
+        ObservableList<Integer>list=nursetable.getSelectionModel().getSelectedIndices();
+
     }
 
     public void load(){
